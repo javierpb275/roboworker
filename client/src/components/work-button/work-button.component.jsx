@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-const WorkButton = () => (
+const WorkButton = ({earnCoins}) => (
     <div>
-        <button>WORK</button>
+        <button onClick={() => earnCoins()}>WORK</button>
     </div>
 );
 
