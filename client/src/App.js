@@ -17,8 +17,14 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      users: users
+      users: []
     }
+  }
+
+
+  //This gets mounted everytime we run the page and it updates the state
+  componentDidMount() {
+    this.setState({ users: users});
   }
 
   //This function makes the user coins amount increase. It is made for the WorkButton Component
@@ -34,6 +40,7 @@ class App extends Component {
     const {users} = this.state;
   return (
     <div className="App">
+      <h1>ROBOWORKER</h1>
       <UserCard users={users}/>
       <WorkButton earnCoins={this.onClickEarnCoins}/>
     </div>
