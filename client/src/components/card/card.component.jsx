@@ -5,7 +5,7 @@ import React from 'react';
 
 const Card = ({id, username, email, coins}) => (
     <div>
-        <img alt='user-image' src={`https://robohash.org/${id}`}/>
+        <img alt='user-img' src={`https://robohash.org/${id}`}/>
         <div>
             <h2>{username}</h2>
             <p>{email}</p>

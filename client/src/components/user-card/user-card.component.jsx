@@ -14,7 +14,8 @@ const UserCard = ({users}) => {
                     id={users[i].id}
                     username={users[i].username}
                     email={users[i].email}
-                    coins={users[i].coins}/>
+                    coins={users[i].coins}
+                    />
                 );
             })
         }
