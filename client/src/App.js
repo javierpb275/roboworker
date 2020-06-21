@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 
 //COMPONENTS
-import Navigation from './components/navigation/navigation.component';
-import Card from './components/card/card.component';
+import Navigation from './components/navigation/navigation.component';// This is the navigation bar where you can select to sign in, sign out and register.
+import Card from './components/card/card.component';//This component displays the user image and user information.
 //import UserCard from './components/user-card/user-card.component';//This component displays the user image and user information. It's a parent of Card
 import WorkButton from './components/work-button/work-button.component';//This component makes the user earn coins
-import ProductsList from './components/products-list/products-list.component';
+import ProductsList from './components/products-list/products-list.component';//This component displays a list of the products available with their icon, name and price. It's a parent of Product
 
 //ARRAYS
-import {users} from './users';
-import {products} from './products';
+import {users} from './users';//This is a fake database of the users
+import {products} from './products';//This is an array of the products available
 
 //STYLES
 import './App.css';
@@ -50,7 +50,7 @@ class App extends Component {
   return (
     <div className="App">
       <Navigation/>
-      <h1>ROBOWORKER</h1>
+      <h1 className="title">ROBOWORKER</h1>
       <Card id={id} username={username} email={email} coins={coins}/>
       <WorkButton earnCoins={this.onClickEarnCoins}/>
       <ProductsList products={products}/>

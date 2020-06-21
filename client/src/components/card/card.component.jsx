@@ -1,5 +1,5 @@
 //This Card component contains the user image and all their information (name, email, coins...)
-//We get all the props from UserCard component, where we pass all the information.
+
 
 import React from 'react';
 

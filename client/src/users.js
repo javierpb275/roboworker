@@ -1,3 +1,5 @@
+//This is a fake database of the users
+
 export const users = [
     {
         id: 1,

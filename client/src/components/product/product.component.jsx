@@ -1,3 +1,6 @@
+//This Product component contains the Product icon and all their information (name, price...)
+//React-Tilt makes our product have a cool style when we hover over them
+
 import React from 'react';
 import Tilt from 'react-tilt';
 

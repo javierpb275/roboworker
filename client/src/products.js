@@ -3,6 +3,8 @@ import Gear from './assets/product-image/gear.png';
 import Oil from './assets/product-image/oil.png';
 import RobotAssistant from './assets/product-image/robot-assistant.png';
 
+//This is an array of the products available
+
 export const products = [
     {
         id: 1,

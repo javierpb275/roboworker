@@ -1,3 +1,5 @@
+//This component displays a list of the products available with their icon, name and price. It's a parent of Product
+
 import React from 'react';
 import Product from '../product/product.component';
 
