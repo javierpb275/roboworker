@@ -7,9 +7,10 @@ import SignUp from './components/sign-up/sign-up.component';//This is the SignUp
 import Card from './components/card/card.component';//This component displays the user image and user information.
 //import UserCard from './components/user-card/user-card.component';//This component displays the user image and user information. It's a parent of Card
 import WorkButton from './components/work-button/work-button.component';//This component makes the user earn coins
+import SearchBox from './components/search-box/search-box.component';//This is a reusable input component that we can customize  and pass a different function or placeholder and we can use it in multiple places.
 import ProductsList from './components/products-list/products-list.component';//This component displays a list of the products available with their icon, name and price. It's a parent of Product
 
-//ARRAYS
+//Lists
 import {users} from './users';//This is a fake database of the users
 import {products} from './products';//This is an array of the products available
 
@@ -31,7 +32,8 @@ class App extends Component {
         username: '',
         email: '',
         coins: 0
-      }
+      },
+      searchField: ''//This searchField is used for the SearchBox component to search
       
       
     }
@@ -68,7 +70,10 @@ class App extends Component {
 
 
   render() {
-    const {user, isSignedIn, products} = this.state;
+    const {user, isSignedIn, products, searchField } = this.state;
+    //We filter the products so that we can use our SearchBox component to search for different products
+    const filteredProducts = products.filter(product =>
+      product.name.toLowerCase().includes(searchField.toLowerCase()));
   return (
     <div className="App">
       <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
@@ -77,7 +82,12 @@ class App extends Component {
       <h1 className="title">ROBOWORKER</h1>
       <Card id={user.id} username={user.username} email={user.email} coins={user.coins}/>
       <WorkButton earnCoins={this.onClickEarnCoins}/>
-      <ProductsList products={products}/>
+      
+      <SearchBox
+      placeholder='Search Product'
+      handleChange={e => this.setState({searchField: e.target.value })}
+      />
+      <ProductsList products={filteredProducts}/>
       </div>
       : (
         this.state.route === 'signin' 
