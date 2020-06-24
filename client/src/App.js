@@ -6,7 +6,7 @@ import SignIn from './components/sign-in/sign-in.component';//This is the SignIn
 import SignUp from './components/sign-up/sign-up.component';//This is the SignUp component form.
 import Card from './components/card/card.component';//This component displays the user image and user information.
 //import UserCard from './components/user-card/user-card.component';//This component displays the user image and user information. It's a parent of Card
-import WorkButton from './components/work-button/work-button.component';//This component makes the user earn coins
+import CustomButton from './components/custom-button/custom-button.component';//This is a reusable button component that we can customize and pass a different function and we can use it in multiple places.
 import SearchBox from './components/search-box/search-box.component';//This is a reusable input component that we can customize  and pass a different function or placeholder and we can use it in multiple places.
 import ProductsList from './components/products-list/products-list.component';//This component displays a list of the products available with their icon, name and price. It's a parent of Product
 
@@ -81,7 +81,7 @@ class App extends Component {
       ? <div>
       <h1 className="title">ROBOWORKER</h1>
       <Card id={user.id} username={user.username} email={user.email} coins={user.coins}/>
-      <WorkButton earnCoins={this.onClickEarnCoins}/>
+      <CustomButton handleClick={this.onClickEarnCoins}/>
       
       <SearchBox
       placeholder='Search Product'
