@@ -68,6 +68,11 @@ class App extends Component {
 
   }
 
+  //This function takes care of getting what the user types in the SearchBox and change the state of searchField
+  handleChange = (e) => {
+    this.setState({searchField: e.target.value })
+  }
+
 
   render() {
     const {user, isSignedIn, products, searchField } = this.state;
@@ -85,7 +90,7 @@ class App extends Component {
       
       <SearchBox
       placeholder='Search Product'
-      handleChange={e => this.setState({searchField: e.target.value })}
+      handleChange={this.handleChange}
       />
       <ProductsList products={filteredProducts}/>
       </div>
