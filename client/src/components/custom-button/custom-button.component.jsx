@@ -2,9 +2,12 @@
 
 import React from 'react';
 
-const WorkButton = ({handleClick}) => (
+const WorkButton = ({handleClick, icon, title}) => (
     <div>
-        <button onClick={() => handleClick()}>WORK</button>
+        <button onClick={() => handleClick()}>
+            <img src={icon}/>
+            <p>{title}</p>
+        </button>
     </div>
 );
 
