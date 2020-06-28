@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Route } from 'react-router-dom';
 
 //COMPONENTS
 import Navigation from './components/navigation/navigation.component';// This is the navigation bar where you can select to sign in, sign out and register.
@@ -73,6 +74,9 @@ class App extends Component {
 
   }
 
+  //This function does nothing
+  nothing = () => {}
+
   //This function takes care of getting what the user types in the SearchBox and change the state of searchField
   handleChange = (e) => {
     this.setState({searchField: e.target.value })
@@ -92,7 +96,7 @@ class App extends Component {
       <h1 className="title">ROBOWORKER</h1>
       <Card id={user.id} username={user.username} email={user.email} coins={user.coins}/>
       <CustomButton handleClick={this.onClickEarnCoins} icon={nailerImg} title='Work'/>
-      <CustomButton handleClick={this.onClickEarnCoins} icon={backpackImg} title='Backpack'/>
+      <CustomButton handleClick={this.nothing} icon={backpackImg} title='Backpack'/>
       <SearchBox
       placeholder='Search Product'
       handleChange={this.handleChange}
@@ -104,7 +108,6 @@ class App extends Component {
         ? <SignIn onRouteChange={this.onRouteChange}/>
         : <SignUp onRouteChange={this.onRouteChange}/>
       )
-      
     }
     </div>
     );

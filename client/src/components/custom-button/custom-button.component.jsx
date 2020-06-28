@@ -3,12 +3,12 @@
 import React from 'react';
 
 const WorkButton = ({handleClick, icon, title}) => (
-    <div>
+    
         <button onClick={() => handleClick()}>
             <img src={icon}/>
             <p>{title}</p>
         </button>
-    </div>
+    
 );
 
 export default WorkButton;
