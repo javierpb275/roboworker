@@ -14,6 +14,11 @@ import ProductsList from './components/products-list/products-list.component';//
 import {users} from './users';//This is a fake database of the users
 import {products} from './products';//This is an array of the products available
 
+//Assets
+import nailerImg from './assets/nailer-image/nailer.png';
+import backpackImg from './assets/backpack-image/backpack.png';
+import storeImg from './assets/store-image/store-icon.png';
+
 //STYLES
 import './App.css';
 
@@ -86,8 +91,8 @@ class App extends Component {
       ? <div>
       <h1 className="title">ROBOWORKER</h1>
       <Card id={user.id} username={user.username} email={user.email} coins={user.coins}/>
-      <CustomButton handleClick={this.onClickEarnCoins}/>
-      
+      <CustomButton handleClick={this.onClickEarnCoins} icon={nailerImg} title='Work'/>
+      <CustomButton handleClick={this.onClickEarnCoins} icon={backpackImg} title='Backpack'/>
       <SearchBox
       placeholder='Search Product'
       handleChange={this.handleChange}
