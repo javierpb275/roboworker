@@ -3,9 +3,9 @@
 import React from 'react';
 
 const WorkButton = ({handleClick, icon, title}) => (
-    
+   
         <button onClick={() => handleClick()}>
-            <img src={icon}/>
+            <img alt='icon' src={icon}/>
             <p>{title}</p>
         </button>
     

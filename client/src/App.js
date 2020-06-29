@@ -10,6 +10,10 @@ import Card from './components/card/card.component';//This component displays th
 import CustomButton from './components/custom-button/custom-button.component';//This is a reusable button component that we can customize and pass a different function and we can use it in multiple places.
 import SearchBox from './components/search-box/search-box.component';//This is a reusable input component that we can customize  and pass a different function or placeholder and we can use it in multiple places.
 import ProductsList from './components/products-list/products-list.component';//This component displays a list of the products available with their icon, name and price. It's a parent of Product
+import Store from './components/store/store.component';//This component is an image of a store that when we click on it, it takes us to the StorePage
+
+//PAGES
+import StorePage from './pages/store-page/store-page.component'//This is the store where we can buy any Product from the ProductList (It's the parent of ProductList)
 
 //Lists
 import {users} from './users';//This is a fake database of the users
@@ -18,10 +22,11 @@ import {products} from './products';//This is an array of the products available
 //Assets
 import nailerImg from './assets/nailer-image/nailer.png';
 import backpackImg from './assets/backpack-image/backpack.png';
-import storeImg from './assets/store-image/store-icon.png';
+
 
 //STYLES
 import './App.css';
+
 
 
 
@@ -94,6 +99,8 @@ class App extends Component {
       { this.state.route === 'home' 
       ? <div>
       <h1 className="title">ROBOWORKER</h1>
+      <Store/>
+      <Route exact path="/store" component={() => <StorePage/>} />
       <Card id={user.id} username={user.username} email={user.email} coins={user.coins}/>
       <CustomButton handleClick={this.onClickEarnCoins} icon={nailerImg} title='Work'/>
       <CustomButton handleClick={this.nothing} icon={backpackImg} title='Backpack'/>
