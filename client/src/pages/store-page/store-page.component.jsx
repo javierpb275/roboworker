@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
+
+//COMPONENTS
 import ProductsList from '../../components/products-list/products-list.component';//This component displays a list of the products available with their icon, name and price. It's a parent of Product
 import SearchBox from '../../components/search-box/search-box.component';//This is a reusable input component that we can customize  and pass a different function or placeholder and we can use it in multiple places.
-import {products} from '../../products';//This is an array of the products available
+import {products} from './products';//This is an array of the products available
 
 
 
@@ -40,7 +43,9 @@ class StorePage extends Component {
 
         <div>
             <nav>
+            <Link to='/'>
             <p> EXIT</p>
+            </Link>
             </nav>
             <h1>STORE</h1>
             <div>
