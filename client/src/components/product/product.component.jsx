@@ -1,19 +1,22 @@
 //This Product component contains the Product icon and all their information (name, price...)
-//React-Tilt makes our product have a cool style when we hover over them
+
 
 import React from 'react';
 
+//styles
+
+import './product.styles.scss';
+
 
 const Product = ({id, name, icon, price, coinIcon}) => (
-    <div>
+    <div className='products-container' >
         
-            <div className="Tilt-inner pa3">
+            <div className='product tc grow bg-light-green br3 pa3 ma2 dib bw2 shadow-5'>
                 <img style={{paddingTop:'5px'}} alt="product-icon" src={icon}/>
-                <h6>{name}</h6>
-                <div>
-                <img alt="coin-icon" src={coinIcon}/>
+                <h2>{name}</h2>
+                <div className='product-price'>
                     <p>
-                    {price}
+                    <img className='coin-icon' alt="coin-icon" src={coinIcon}/> {price}
                     </p>
                 </div>
             </div>
