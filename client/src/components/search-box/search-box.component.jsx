@@ -2,15 +2,15 @@
 
 import React from 'react';
 
-const SearchBox = ({ placeholder, handleChange }) => (
-    <div>
 
+
+const SearchBox = ({ placeholder, handleChange }) => (
+    <div className='search-box' style={{marginBottom:'2%'}}>
     <input 
       type='search' 
       placeholder={placeholder} 
       onChange={handleChange} 
     />
-
     </div>
 );
 

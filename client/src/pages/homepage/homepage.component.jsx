@@ -11,6 +11,7 @@ import CustomIcon from '../../components/custom-icon/custom-icon.component';//Th
 import Title from '../../components/title/title.component'; // This component is a reusable title for the page
 import SearchBox from '../../components/search-box/search-box.component';//This is a reusable input component that we can customize  and pass a different function or placeholder and we can use it in multiple places.
 import ProductsList from '../../components/products-list/products-list.component';//This component displays a list of the products available with their icon, name and price. It's a parent of Product
+import Scroll from '../../components/scroll/scroll.component';
 
 //Lists
 import {users} from './users';//This is a fake database of the users
@@ -93,7 +94,9 @@ class Homepage extends Component {
       <CustomButton handleClick={this.onClickEarnCoins} icon={nailerImg} title='Work'/>
       <CustomIcon icon={storeImg} title='$TORE'/>
       <SearchBox placeholder='Search Product' handleChange={this.handleChange}/>
+      <Scroll>
       <ProductsList coinIcon={coinImg} products={filteredProducts}/>
+      </Scroll>
       </div>
       : (
         this.state.route === 'signin' 
