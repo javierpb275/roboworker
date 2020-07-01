@@ -1,8 +1,8 @@
 .signin {
     display: flex;
     justify-content: center;
-    padding-top: 10%;
-    padding-bottom: 15%;
+    margin-top: 10%;
+    margin-bottom: 15%;
 }
 
 .ba {
