@@ -2,13 +2,16 @@
 
 import React from 'react';
 
+//styles
+import './custom-button.styles.scss';
+
 const WorkButton = ({handleClick, icon, title}) => (
-   
+   <div className="custom-button">
         <button onClick={() => handleClick()}>
-            <img alt='icon' src={icon}/>
+            <img  className='icon' alt='icon' src={icon}/>
             <p>{title}</p>
         </button>
-    
+    </div>
 );
 
 export default WorkButton;

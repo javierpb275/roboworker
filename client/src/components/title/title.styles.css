@@ -11,4 +11,30 @@
     /*Title of our app "RoboWorker"*/
     .title {
       font-family: 'Technology Regular';
+      margin-bottom: 5%;
+
+    animation-name: flickering;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-delay: 0.5s;
+    animation-iteration-count: infinite; 
+    animation-direction: alternate;
     }
+
+    /*ANIMATIONS: */
+
+@keyframes flickering {
+
+  0% {
+      color: black;
+      
+  }
+
+  100% {
+      color: rgb(46, 107, 128); 
+      
+  }
+
+  /*from {background: red;}
+  to {background: black;}*/
+}

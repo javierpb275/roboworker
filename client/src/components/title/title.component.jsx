@@ -5,8 +5,8 @@ import React from 'react';
 import './title.styles.css';
 
 const Title = ({ title }) => (
-    <div style={ {textAlign: "center"}}>
-        <h1 className='title'>{title}</h1>
+    <div style={ {textAlign: "center", fontSize:"500%", fontWeight:"bold"}}>
+        <div className='title'>{title}</div>
     </div>
 );
 

@@ -1,0 +1,33 @@
+.custom-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 1%;
+    
+}
+
+button {
+    background-color: silver;
+    width: 8vw;
+    height: 12vh;
+    border-radius: 50%;
+}
+
+
+
+button:active {
+
+    .icon {
+        transform: rotate(120deg);
+    }
+
+}
+
+button:focus { 
+    outline-style: none; 
+}
+
+.icon {
+    transform: rotate(80deg);
+
+}
+
