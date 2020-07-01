@@ -87,7 +87,7 @@ class Homepage extends Component {
       { this.state.route === 'home' 
       ? <div>
       <Title title={'ROBOWORKER'}/>
-      <Card id={user.id} username={user.username} email={user.email} coins={user.coins}/>
+      <Card id={user.id} username={user.username} email={user.email} coins={user.coins} coinIcon={coinImg}/>
       <CustomButton handleClick={this.onClickEarnCoins} icon={nailerImg} title='Work'/>
       <CustomIcon icon={storeImg} title='Store'/>
       <SearchBox placeholder='Search Product' handleChange={this.handleChange}/>

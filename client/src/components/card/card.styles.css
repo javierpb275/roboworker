@@ -1,0 +1,28 @@
+.card {
+    display: flex;
+    justify-content: flex-start;
+    width: 30vw;
+    height: 25vh;
+    margin: 0 33% 0 33%;
+    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+                radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+}
+
+.user-img {
+    width: 15vw;
+}
+
+.user-info {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows:  auto auto auto;
+    justify-content: start;
+    align-content: center;
+}
+
+
+
+.coin-icon {
+    height: 2vh;
+    width: 1vw;
+}

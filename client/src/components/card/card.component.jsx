@@ -1,17 +1,27 @@
 //This Card component contains the user image and all their information (name, email, coins...)
-
+//React-Tilt makes our component have a cool style when we hover over them
 
 import React from 'react';
+import Tilt from 'react-tilt';
 
-const Card = ({id, username, email, coins}) => (
-    <div>
-        <img alt='user-img' src={`https://robohash.org/${id}`}/>
-        <div>
+//styles
+import './card.styles.css';
+
+const Card = ({id, username, email, coins, coinIcon}) => (
+    
+    <Tilt className="Tilt" options={{ max : 40 }} >
+    <div className='card'>
+        <img  className='user-img' alt='user-img' src={`https://robohash.org/${id}`}/>
+        <div className='user-info'>
             <h2>{username}</h2>
             <p>{email}</p>
-            <p>Coins: {coins}</p>
+            <p>
+             Coins: <img  className='coin-icon' alt='coin-icon' src={coinIcon}/> {coins}
+            </p>
         </div>
     </div>
+    </Tilt>
+    
 );
 
 export default Card;
