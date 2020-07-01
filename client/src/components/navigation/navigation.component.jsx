@@ -4,20 +4,23 @@
 
 import React from 'react';
 
+//STYLES
+import './navigation.styles.css';
+
 const Navigation = ({ onRouteChange, isSignedIn }) => {
     
         
     if (isSignedIn) {
         return (
-        <nav>
-            <p onClick={() => onRouteChange('signout')}>Sign Out</p>
+        <nav style={{display: 'flex', justifyContent: 'flex-end'}}>
+            <p onClick={() => onRouteChange('signout')} className='option'>Sign Out</p>
         </nav>
         );
     } else {
         return (  
-        <nav>
-            <p onClick={() => onRouteChange('signin')}>Sign In</p>
-            <p onClick={() => onRouteChange('signup')}>Sign Up</p>
+        <nav style={{display: 'flex', justifyContent: 'flex-end'}}>
+            <p onClick={() => onRouteChange('signin')} className='option'>Sign In</p>
+            <p onClick={() => onRouteChange('signup')} className='option'>Sign Up</p>
         </nav>
         );
     }

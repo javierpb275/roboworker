@@ -3,11 +3,11 @@ import React, {Component} from 'react';
 
 //COMPONENTS
 import Navigation from '../../components/navigation/navigation.component';// This is the navigation bar where you can select to sign in, sign out and register.
-import SignIn from '../../components/sign-in/sign-in.component';//This is the SignIn component form.
-import SignUp from '../../components/sign-up/sign-up.component';//This is the SignUp component form.
+import SignIn from '../sign-in/sign-in.component';//This is the SignIn component form.
+import SignUp from '../sign-up/sign-up.component';//This is the SignUp component form.
 import Card from '../../components/card/card.component';//This component displays the user image and user information.
 import CustomButton from '../../components/custom-button/custom-button.component';//This is a reusable button component that we can customize and pass a different function and we can use it in multiple places.
-import CustomIcon from '../../components/custom-icon/custom-icon.component';//This component is an image of a store that when we click on it, it takes us to the StorePage
+import CustomIcon from '../../components/custom-icon/custom-icon.component';//This component is a reusable icon
 import Title from '../../components/title/title.component'; // This component is a reusable title for the page
 import SearchBox from '../../components/search-box/search-box.component';//This is a reusable input component that we can customize  and pass a different function or placeholder and we can use it in multiple places.
 import ProductsList from '../../components/products-list/products-list.component';//This component displays a list of the products available with their icon, name and price. It's a parent of Product
@@ -19,7 +19,7 @@ import {products} from './products';//This is an array of the products available
 //Assets
 import nailerImg from '../../assets/nailer-image/nailer.png';
 import storeImg from '../../assets/store-image/store-icon.png';
-
+import coinImg from '../../assets/coin-image/coin.png';
 
 
 
@@ -82,7 +82,7 @@ class Homepage extends Component {
     const filteredProducts = products.filter(product =>
       product.name.toLowerCase().includes(searchField.toLowerCase()));
   return (
-    <div className="homepage">
+    <div className="homepage" style={{margin: '1% 2% 2% 2%'}}>
       <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
       { this.state.route === 'home' 
       ? <div>
@@ -91,7 +91,7 @@ class Homepage extends Component {
       <CustomButton handleClick={this.onClickEarnCoins} icon={nailerImg} title='Work'/>
       <CustomIcon icon={storeImg} title='Store'/>
       <SearchBox placeholder='Search Product' handleChange={this.handleChange}/>
-      <ProductsList products={filteredProducts}/>
+      <ProductsList coinIcon={coinImg} products={filteredProducts}/>
       </div>
       : (
         this.state.route === 'signin' 

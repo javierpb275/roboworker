@@ -1,3 +1,9 @@
+.signup {
+    display: flex;
+    justify-content: center;
+}
+
+
 .ba {
     border-style: solid;
     border-width: 1px;
