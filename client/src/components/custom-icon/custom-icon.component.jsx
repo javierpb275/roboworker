@@ -1,11 +1,15 @@
 import React from 'react';
 
+//styles
+import './custom-icon.styles.scss';
+
 const CustomIcon = ({icon, title}) => (
-    <div>
+    <div className='custom-icon'>
         
-        <img alt='icon' src={icon}/>
-        <p>{title}</p>
-        
+        <img className='icon 'alt='icon' src={icon}/>
+        <span className='title-icon'>
+        {title}
+        </span>
     </div>
 );
 

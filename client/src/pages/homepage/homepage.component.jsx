@@ -91,7 +91,7 @@ class Homepage extends Component {
       <Title title={'ROBOWORKER'}/>
       <Card id={user.id} username={user.username} email={user.email} coins={user.coins} coinIcon={coinImg}/>
       <CustomButton handleClick={this.onClickEarnCoins} icon={nailerImg} title='Work'/>
-      <CustomIcon icon={storeImg} title='Store'/>
+      <CustomIcon icon={storeImg} title='$TORE'/>
       <SearchBox placeholder='Search Product' handleChange={this.handleChange}/>
       <ProductsList coinIcon={coinImg} products={filteredProducts}/>
       </div>

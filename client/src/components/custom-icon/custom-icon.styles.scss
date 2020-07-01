@@ -1,0 +1,40 @@
+.custom-icon {
+
+    margin-bottom: 2.5%;
+    
+.icon {
+    width: 5%;
+    height: 5%;
+}
+
+.title-icon {
+    font-size: 300%;
+    font-weight: bold;
+
+    animation-name: flickering-store;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-delay: 0.5s;
+    animation-iteration-count: infinite; 
+    animation-direction: alternate;
+}
+
+
+}
+
+  
+      /*ANIMATIONS: */
+  
+  @keyframes flickering-store {
+  
+    0% {
+        color: black;
+        
+    }
+  
+    100% {
+        color: rgb(54, 136, 78); 
+        
+    }
+  
+  }

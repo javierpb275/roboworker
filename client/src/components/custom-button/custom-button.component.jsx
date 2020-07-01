@@ -8,7 +8,7 @@ import './custom-button.styles.scss';
 const WorkButton = ({handleClick, icon, title}) => (
    <div className="custom-button">
         <button onClick={() => handleClick()}>
-            <img  className='icon' alt='icon' src={icon}/>
+            <img  className='button-icon' alt='icon' src={icon}/>
             <p>{title}</p>
         </button>
     </div>
