@@ -21,6 +21,8 @@ import nailerImg from '../../assets/nailer-image/nailer.png';
 import storeImg from '../../assets/store-image/store-icon.png';
 import coinImg from '../../assets/coin-image/coin.png';
 
+//style
+import './homepage.styles.css';
 
 
 class Homepage extends Component {
@@ -82,7 +84,7 @@ class Homepage extends Component {
     const filteredProducts = products.filter(product =>
       product.name.toLowerCase().includes(searchField.toLowerCase()));
   return (
-    <div className="homepage" style={{margin: '1% 2% 2% 2%'}}>
+    <div className="homepage" style={{padding: '1% 2% 2% 2%'}}>
       <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
       { this.state.route === 'home' 
       ? <div>
