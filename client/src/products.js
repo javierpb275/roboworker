@@ -1,7 +1,7 @@
-import Screw from '../../assets/product-image/screw.png';
-import Gear from '../../assets/product-image/gear.png';
-import Oil from '../../assets/product-image/oil.png';
-import RobotAssistant from '../../assets/product-image/robot-assistant.png';
+import Screw from './assets/product-image/screw.png';
+import Gear from './assets/product-image/gear.png';
+import Oil from './assets/product-image/oil.png';
+import RobotAssistant from './assets/product-image/robot-assistant.png';
 
 //This is an array of the products available
 

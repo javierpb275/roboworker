@@ -1,23 +1,20 @@
-// This SignUp component displays a SignUp form where we register our user
+// This SignIn component displays a SignIn form where we sign in with our user
 // We use the onRouteChange() function to navigate through our website
+
 
 import React from 'react';
 
-import Title from '../../components/title/title.component';
+import Title from '../title/title.component';
 
-import './sign-up.styles.css';
+import './sign-in.styles.css';
 
-const SignUp = ({onRouteChange}) => {
+const SignIn = ({onRouteChange}) => {
     return (
-        <div className="signup">
+      <div className="signin">
         <main className="pa4 black-80" style={{textAlign:'center' }}>
         <div className="measure">
           <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-          <Title title='Sign Up'/>
-            <div className="mt3">
-              <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
-              <input className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="name"  id="name"/>
-            </div>
+            <Title title='Sign In'/>
             <div className="mt3">
               <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
               <input className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email-address"  id="email-address"/>
@@ -32,10 +29,10 @@ const SignUp = ({onRouteChange}) => {
             onClick={() => onRouteChange('home')}
             className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
             type="submit" 
-            value="Sign up"/>
+            value="Sign in"/>
           </div>
           <div className="lh-copy mt3">
-            <a onClick={() => onRouteChange('signin')} href="#0" className="f6 link dim black db pointer">Sign in</a>
+            <p  onClick={() => onRouteChange('signup')} href="#0" className="f6 link dim black db pointer">Sign up</p>
           </div>
         </div>
       </main>
@@ -45,4 +42,4 @@ const SignUp = ({onRouteChange}) => {
 
 }
 
-export default SignUp;
+export default SignIn;
