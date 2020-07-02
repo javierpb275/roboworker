@@ -55,7 +55,28 @@ class App extends Component {
 
   //This function makes the user coins amount increase. It is made for the WorkButton Component
   onClickEarnCoins = () => {
-    this.setState(Object.assign(this.state.user, {coins: this.state.user.coins + 1}));
+    const {user} = this.state;
+
+    this.setState(Object.assign(user, {coins: user.coins + 1}));
+  };
+
+  //This function allows the user to spend their coins. It is made for the Product component
+  onClickSpendCoins = (price) => {
+    const {user} = this.state;
+
+    if (user.coins > price) {
+    this.setState(Object.assign(user, {coins: user.coins - price}));
+    }
+
+    else if (user.coins === price) {
+      this.setState(Object.assign(user, {coins: user.coins = 0}));
+
+    }
+
+    else {
+      alert('You can`t afford this product. Keep Working!')
+    }
+
   };
 
   //This function takes care of getting what the user types in the SearchBox and change the state of searchField
@@ -95,7 +116,7 @@ class App extends Component {
       <CustomIcon icon={storeImg} title='$TORE'/>
       <SearchBox placeholder='Search Product' handleChange={this.handleChange}/>
       <Scroll>
-      <ProductsList coinIcon={coinImg} products={filteredProducts}/>
+      <ProductsList coinIcon={coinImg} products={filteredProducts} handleClick={this.onClickSpendCoins}/>
       </Scroll>
       </div>
       : (

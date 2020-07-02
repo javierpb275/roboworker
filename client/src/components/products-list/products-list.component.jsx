@@ -3,7 +3,7 @@
 import React from 'react';
 import Product from '../product/product.component';
 
-const ProductsList = ({products, coinIcon}) => {
+const ProductsList = ({products, coinIcon, handleClick}) => {
     return(
     <div>
         {
@@ -15,6 +15,7 @@ const ProductsList = ({products, coinIcon}) => {
                     icon={products[i].icon}
                     price={products[i].price}
                     coinIcon={coinIcon}
+                    handleClick={handleClick}
                     />
                 );
             })
