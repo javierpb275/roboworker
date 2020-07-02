@@ -11,7 +11,7 @@ import CustomIcon from './components/custom-icon/custom-icon.component';//This c
 import Title from './components/title/title.component'; // This component is a reusable title for the page
 import SearchBox from './components/search-box/search-box.component';//This is a reusable input component that we can customize  and pass a different function or placeholder and we can use it in multiple places.
 import ProductsList from './components/products-list/products-list.component';//This component displays a list of the products available with their icon, name and price. It's a parent of Product
-import Scroll from './components/scroll/scroll.component';
+import Scroll from './components/scroll/scroll.component';//This component allows us to wrap the producList and make it scrollable
 
 //Lists
 import {users} from './users';//This is a fake database of the users

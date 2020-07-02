@@ -1,3 +1,5 @@
+//This component allows us to wrap the producList and make it scrollable
+
 import React from 'react';
 
 const Scroll = (props) => {
