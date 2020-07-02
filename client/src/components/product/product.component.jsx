@@ -10,17 +10,11 @@ import './product.styles.scss';
 
 const Product = ({id, name, icon, price, coinIcon}) => (
     <div className='products-container' >
-        
-            <div className='product tc grow bg-light-green br3 pa3 ma2 dib bw2 shadow-5'>
+            <div className='product grow br3 bw2 shadow-5'>
                 <img style={{paddingTop:'5px'}} alt="product-icon" src={icon}/>
                 <h2>{name}</h2>
-                <div className='product-price'>
-                    <p>
-                    <img className='coin-icon' alt="coin-icon" src={coinIcon}/> {price}
-                    </p>
-                </div>
+                <p><img className='coin-icon' alt="coin-icon" src={coinIcon}/> {price}</p>
             </div>
-       
     </div>
 );
 
