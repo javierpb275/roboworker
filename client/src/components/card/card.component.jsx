@@ -9,7 +9,7 @@ import './card.styles.css';
 
 const Card = ({id, username, email, coins, coinIcon}) => (
     <div className='card-container'>
-    <Tilt className="card" options={{ max : 40 }} >
+    <Tilt className="card" options={{ max : 70 }} >
         <img  className='user-img' alt='user-img' src={`https://robohash.org/${id}`}/>
         <div className='user-info'>
             <h2>{username}</h2>
