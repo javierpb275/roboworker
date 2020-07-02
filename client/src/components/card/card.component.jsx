@@ -8,9 +8,8 @@ import Tilt from 'react-tilt';
 import './card.styles.css';
 
 const Card = ({id, username, email, coins, coinIcon}) => (
-    
-    <Tilt className="Tilt" options={{ max : 40 }} >
-    <div className='card'>
+    <div className='card-container'>
+    <Tilt className="card" options={{ max : 40 }} >
         <img  className='user-img' alt='user-img' src={`https://robohash.org/${id}`}/>
         <div className='user-info'>
             <h2>{username}</h2>
@@ -19,8 +18,8 @@ const Card = ({id, username, email, coins, coinIcon}) => (
              Coins: <img  className='coin-icon' alt='coin-icon' src={coinIcon}/> {coins}
             </p>
         </div>
-    </div>
     </Tilt>
+    </div>
     
 );
 
