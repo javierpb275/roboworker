@@ -3,4 +3,6 @@
 }
 
 
-
+.option:hover {
+    cursor: pointer;
+}
