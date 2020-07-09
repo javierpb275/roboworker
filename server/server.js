@@ -11,3 +11,14 @@ app.get('/', (req, res)=> {
 app.listen(3001, ()=> {
     console.log('app is running on port 3001');
 })
+
+
+/*
+
+/ --> res = this is working
+/signin --> POST = success/fail
+/register --> POST = new user
+/profile/:userId --> GET = user
+/coin --> PUT --> user object updated
+
+*/ 
