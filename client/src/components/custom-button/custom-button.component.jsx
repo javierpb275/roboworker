@@ -9,7 +9,7 @@ const WorkButton = ({handleClick, icon, title}) => (
    <div className="custom-button">
         <button onClick={() => handleClick()}>
             <img  className='button-icon' alt='icon' src={icon}/>
-            <p>{title}</p>
+            <p className="button-title">{title}</p>
         </button>
     </div>
 );
