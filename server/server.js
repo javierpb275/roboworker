@@ -2,6 +2,9 @@
 const express = require('express');
 const app = express();
 
+//bodyParser
+app.use(express.json());
+
 //fake database
 const database = {
     users: [
