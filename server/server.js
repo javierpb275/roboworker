@@ -59,6 +59,9 @@ app.post('/register', (req, res) => {
         coins: 0,
         joined: new Date()
     })
+
+    res.json(databse.users[database.users.length-1]);
+    
 })
 
 
