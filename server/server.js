@@ -28,7 +28,7 @@ const database = {
 }
 
 app.get('/', (req, res)=> {
-    res.send('this is working');
+    res.send(database.users);
 })
 
 //SIGN IN:
@@ -61,7 +61,7 @@ app.post('/register', (req, res) => {
     })
 
     res.json(databse.users[database.users.length-1]);
-    
+
 })
 
 
