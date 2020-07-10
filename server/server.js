@@ -6,6 +6,10 @@ app.get('/', (req, res)=> {
     res.send('this is working');
 })
 
+app.post('/signin', (req, res) => {
+    res.send('signin');
+})
+
 
 //check if our server is running:
 app.listen(3001, ()=> {
