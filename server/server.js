@@ -31,12 +31,13 @@ app.get('/', (req, res)=> {
     res.send('this is working');
 })
 
+//SIGN IN:
 app.post('/signin', (req, res) => {
 
     if(req.body.email === database.users[0].email && 
         req.body.password === database.users[0].password) {
 
-    res.json(database.users[0]);
+    res.json('success');
 }   
 
     else {
@@ -46,6 +47,20 @@ app.post('/signin', (req, res) => {
 
 
 })
+
+//REGISTER:
+app.post('/register', (req, res) => {
+    const { email, name, password } = req.body;
+    database.users.push({
+        id: '125',
+        name: name,
+        email: email,
+        password: password,
+        coins: 0,
+        joined: new Date()
+    })
+})
+
 
 
 //check if our server is running:
