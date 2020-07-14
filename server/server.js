@@ -114,7 +114,21 @@ app.put('/coins', (req, res) => {
 
 })
 
+/*
 
+bcrypt.hash("bacon", null, null, function(err, hash) {
+    // Store hash in your password DB.
+});
+
+// Load hash from your password DB.
+bcrypt.compare("bacon", hash, function(err, res) {
+    // res == true
+});
+bcrypt.compare("veggies", hash, function(err, res) {
+    // res = false
+});
+
+*/
 
 //check if our server is running:
 app.listen(3001, ()=> {
