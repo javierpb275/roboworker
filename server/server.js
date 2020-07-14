@@ -85,20 +85,31 @@ app.get('/profile/:id', (req, res) => {
 
 })
 
+//update the user to increase their coins:
+app.put('/coins', (req, res) => {
+
+    const { id } = req.body;
+    let found = false;
+
+    database.users.forEach(user => {
+
+        if (user.id === id) {
+            found = true;
+            user.coins++
+           return res.json(user.coins);
+        }
+
+    })
+
+    if (!found) {
+        res.status(400).json('not found');
+    }
+
+})
+
 
 
 //check if our server is running:
 app.listen(3001, ()=> {
     console.log('app is running on port 3001');
 })
-
-
-/*
-
-/ --> res = this is working
-/signin --> POST = success/fail
-/register --> POST = new user
-/profile/:userId --> GET = user
-/coin --> PUT --> user object updated
-
-*/ 
