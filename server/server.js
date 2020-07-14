@@ -2,8 +2,11 @@
 const express = require('express');
 const app = express();
 
-//bodyParser
+//bodyParser:
 app.use(express.json());
+
+//BCRYPT:
+const bcrypt = require('bcrypt-nodejs');
 
 //fake database
 const database = {
@@ -57,7 +60,13 @@ app.post('/signin', (req, res) => {
 
 //REGISTER:
 app.post('/register', (req, res) => {
+
     const { email, name, password } = req.body;
+
+    bcrypt.hash(password, null, null, function(err, hash) {
+        console.log(hash);
+    });
+
     database.users.push({
         id: '125',
         name: name,
@@ -67,7 +76,7 @@ app.post('/register', (req, res) => {
         joined: new Date()
     })
 
-    res.json(databse.users[database.users.length-1]);
+    res.json(database.users[database.users.length-1]);
 
 })
 
