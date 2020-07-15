@@ -8,7 +8,10 @@ import Title from '../title/title.component';
 
 import './sign-in.styles.css';
 
-const SignIn = ({onRouteChange}) => {
+
+class SignIn extends React.Component {
+  render() {
+    const { onRouteChange } = this.props;
     return (
       <div className="signin">
         <main className="pa4 black-80" style={{textAlign:'center' }}>
@@ -39,7 +42,7 @@ const SignIn = ({onRouteChange}) => {
       </div>
       
     );
-
+  }
 }
 
 export default SignIn;

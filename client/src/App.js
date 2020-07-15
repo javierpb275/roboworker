@@ -43,22 +43,14 @@ class App extends Component {
     }
   }
 
-  //This gets mounted everytime we run the page and it updates the state
-  componentDidMount() {
-    fetch('http://localhost:3001')//here we are fetching from the root '/' so we would get the database.users
-    .then(response => response.json())
-    .then(data => console.log(data))
-  }
-
 
   //This gets mounted everytime we run the page and it updates the state
-  /*
   componentDidMount() {
     this.setState({ 
       user: users[1]
      });
   }
-*/
+
   //This function makes the user coins amount increase. It is made for the WorkButton Component
   onClickEarnCoins = () => {
     const {user} = this.state;
