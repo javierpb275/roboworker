@@ -52,12 +52,13 @@ class App extends Component {
 
 
   //This gets mounted everytime we run the page and it updates the state
+  /*
   componentDidMount() {
     this.setState({ 
       user: users[1]
      });
   }
-
+*/
   //This function makes the user coins amount increase. It is made for the WorkButton Component
   onClickEarnCoins = () => {
     const {user} = this.state;
