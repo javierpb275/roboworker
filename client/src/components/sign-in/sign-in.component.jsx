@@ -10,8 +10,8 @@ import './sign-in.styles.css';
 
 
 class SignIn extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       signInEmail:'',
       signInPassword:''
@@ -29,7 +29,12 @@ class SignIn extends React.Component {
     this.setState({signInPassword: event.target.value})
     
   }
+  
+  onSubmitSignIn = () => {
 
+    console.log(this.state);
+    
+  }
 
 
 
