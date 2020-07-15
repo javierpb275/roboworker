@@ -8,6 +8,10 @@ app.use(express.json());
 //BCRYPT:
 const bcrypt = require('bcrypt-nodejs');
 
+//CORS:
+const cors = require('cors');
+app.use(cors());
+
 //fake database
 const database = {
     users: [
