@@ -43,6 +43,13 @@ class App extends Component {
     }
   }
 
+  //This gets mounted everytime we run the page and it updates the state
+  componentDidMount() {
+    fetch('http://localhost:3001')//here we are fetching from the root '/' so we would get the database.users
+    .then(response => response.json())
+    .then(data => console.log(data))
+  }
+
 
   //This gets mounted everytime we run the page and it updates the state
   componentDidMount() {
