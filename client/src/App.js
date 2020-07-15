@@ -30,7 +30,6 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      products: [],
       searchField: '',//This searchField is used for the SearchBox component to search
       route: 'signin',//This route state takes care of changing from one page to another. The default page will be the SignIn component.
       isSignedIn: false,// isSignedIn checks if the user is signed in 
@@ -48,7 +47,6 @@ class App extends Component {
   //This gets mounted everytime we run the page and it updates the state
   componentDidMount() {
     this.setState({ 
-      products: products,
       user: users[1]
      });
   }
@@ -101,7 +99,7 @@ class App extends Component {
 
 
   render() {
-    const {user, isSignedIn, products, searchField} = this.state;
+    const {user, isSignedIn, searchField} = this.state;
     //We filter the products so that we can use our SearchBox component to search for different products
     const filteredProducts = products.filter(product =>
       product.name.toLowerCase().includes(searchField.toLowerCase()));
