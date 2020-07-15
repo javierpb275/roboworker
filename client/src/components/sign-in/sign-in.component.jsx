@@ -10,6 +10,18 @@ import './sign-in.styles.css';
 
 
 class SignIn extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      signInEmail:'',
+      signInPassword:''
+    }
+  }
+
+
+
+
+
   render() {
     const { onRouteChange } = this.props;
     return (
