@@ -14,7 +14,6 @@ import ProductsList from './components/products-list/products-list.component';//
 import Scroll from './components/scroll/scroll.component';//This component allows us to wrap the producList and make it scrollable
 
 //Lists
-import {users} from './users';//This is a fake database of the users
 import {products} from './products';//This is an array of the products available
 
 //Assets
@@ -45,13 +44,13 @@ class App extends Component {
   }
 
   //This function takes care of loading the user which is passed down to the SignIn and SignUp components as a prop
-  loadUser = (data) => {
-    this.setState({data: {
-      id: data.id,
-      name: data.name,
-      email: data.email,
-      coins: data.coins,
-      joined: data.joined
+  loadUser = (user) => {
+    this.setState({user: {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      coins: user.coins,
+      joined: user.joined
       }
     })
   }
@@ -60,7 +59,7 @@ class App extends Component {
   //This gets mounted everytime we run the page and it updates the state
   componentDidMount() {
     this.setState({ 
-      user: users[1]
+      user: this.state.user
      });
   }
 
@@ -122,7 +121,7 @@ class App extends Component {
       { this.state.route === 'home' 
       ? <div>
       <Title title={'ROBOWORKER'}/>
-      <Card id={user.id} username={user.username} email={user.email} coins={user.coins} coinIcon={coinImg}/>
+      <Card id={user.id} name={user.name} email={user.email} coins={user.coins} coinIcon={coinImg}/>
       <CustomButton handleClick={this.onClickEarnCoins} icon={nailerImg} title='Work'/>
       <CustomIcon icon={storeImg} title='$TORE'/>
       <SearchBox placeholder='Search Product' handleChange={this.handleChange}/>

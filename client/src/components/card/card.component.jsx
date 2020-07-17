@@ -7,12 +7,12 @@ import Tilt from 'react-tilt';
 //styles
 import './card.styles.css';
 
-const Card = ({id, username, email, coins, coinIcon}) => (
+const Card = ({id, name, email, coins, coinIcon}) => (
     <div className='card-container'>
     <Tilt className="card" options={{ max : 70 }} >
         <img  className='user-img' alt='user-img' src={`https://robohash.org/${id}`}/>
         <div className='user-info'>
-            <h2>{username}</h2>
+            <h2>{name}</h2>
             <p>{email}</p>
             <p>
              Coins: <img  className='coin-icon' alt='coin-icon' src={coinIcon}/> {coins}
