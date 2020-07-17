@@ -7,8 +7,21 @@ import Title from '../title/title.component';
 
 import './sign-up.styles.css';
 
-const SignUp = ({onRouteChange}) => {
-    return (
+class SignUp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      signInEmail:'',
+      signInPassword:''
+    }
+  }
+
+
+
+
+    render() {
+      const { onRouteChange } = this.props;
+      return (
         <div className="signup">
         <main className="pa4 black-80" style={{textAlign:'center' }}>
         <div className="measure">
@@ -40,9 +53,9 @@ const SignUp = ({onRouteChange}) => {
         </div>
       </main>
       </div>
-      
-    );
-
+      );
+    }
 }
+
 
 export default SignUp;

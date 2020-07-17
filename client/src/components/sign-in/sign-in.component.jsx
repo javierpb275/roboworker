@@ -18,18 +18,24 @@ class SignIn extends React.Component {
     }
   }
 
+  // This function takes care of grabbing what the user types inside the email input and change the state of signInEmail
   onEmailChange = (event) => {
 
     this.setState({signInEmail: event.target.value})
 
   }
 
+  // This function takes care of grabbing what the user types inside the password input and change the state of signInPassword
  onPasswordChange = (event) => {
 
     this.setState({signInPassword: event.target.value})
     
   }
-  
+
+
+  // This function fetch the /signin path from the server with a post method and stringify the state of sinInEmail and signInPassword that we pass
+  // to the email and password properties in the database and then we check if the info is correct and run onRouteChange so that it loads the 
+  // homepage with the user info
   onSubmitSignIn = () => {
 
     fetch('http://localhost:3001/signin', { 
