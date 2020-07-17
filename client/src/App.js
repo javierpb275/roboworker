@@ -35,12 +35,25 @@ class App extends Component {
       isSignedIn: false,// isSignedIn checks if the user is signed in 
       user: {
         id: '',
-        username: '',
+        name: '',
         email: '',
-        coins: 0
+        coins: 0,
+        joined:''
       },
       
     }
+  }
+
+  //This function takes care of loading the user which is passed down to the SignIn and SignUp components as a prop
+  loadUser = (data) => {
+    this.setState({data: {
+      id: data.id,
+      name: data.name,
+      email: data.email,
+      coins: data.coins,
+      joined: data.joined
+      }
+    })
   }
 
 
@@ -119,8 +132,8 @@ class App extends Component {
       </div>
       : (
         this.state.route === 'signin' 
-        ? <SignIn onRouteChange={this.onRouteChange}/>
-        : <SignUp onRouteChange={this.onRouteChange}/>
+        ? <SignIn  onRouteChange={this.onRouteChange}/>
+        : <SignUp loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
       )
     }
     </div>
