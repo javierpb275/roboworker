@@ -11,10 +11,32 @@ class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      signInEmail:'',
-      signInPassword:''
+      email:'',
+      password:'',
+      name: ''
     }
   }
+
+  // This function takes care of grabbing what the user types inside the email input and change the state of email
+  onEmailChange = (event) => {
+
+    this.setState({email: event.target.value})
+
+  }
+
+  // This function takes care of grabbing what the user types inside the password input and change the state of password
+ onPasswordChange = (event) => {
+
+    this.setState({password: event.target.value})
+    
+  }
+
+  // This function takes care of grabbing what the user types inside the name input and change the state of name
+ onNameChange = (event) => {
+
+  this.setState({name: event.target.value})
+  
+}
 
 
 
