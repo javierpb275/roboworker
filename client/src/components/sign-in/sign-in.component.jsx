@@ -9,6 +9,7 @@ import Title from '../title/title.component';
 import './sign-in.styles.css';
 
 
+
 class SignIn extends React.Component {
   constructor(props) {
     super(props);
@@ -48,8 +49,9 @@ class SignIn extends React.Component {
     })
 
     .then(response => response.json())
-    .then(data => {
-      if (data === 'success') {
+    .then(user => {
+      if (user.id) {
+        this.props.loadUser(user);
         this.props.onRouteChange('home');
       }
     })
