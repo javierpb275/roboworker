@@ -38,6 +38,30 @@ class SignUp extends React.Component {
   
 }
 
+  // This function fetch the /register path from the server with a post method and stringify the state of email, password and name that we pass
+  // to the email, password and name properties in the database and then we check if the info is correct and create a new user and run 
+  // onRouteChange so that it loads the homepage with the user info
+  onSubmitSignUp = () => {
+
+    fetch('http://localhost:3001/register', { 
+      method: 'post', 
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password,
+        name: this.state.name
+      })
+    })
+
+    .then(response => response.json())
+    .then(user => {
+      if (user) {
+        this.props.onRouteChange('home');
+      }
+    })
+    
+  }
+
 
 
 
