@@ -67,7 +67,19 @@ class App extends Component {
   onClickEarnCoins = () => {
     const {user} = this.state;
 
-    this.setState(Object.assign(user, {coins: user.coins + 1}));
+    fetch('http://localhost:3001/coins', { 
+      method: 'put', 
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        id: user.id
+      })
+    })
+    
+    .then(response => response.json())
+    .then(amount => {
+      this.setState(Object.assign(user, {coins: amount}));
+    })
+ 
   };
 
   //This function allows the user to spend their coins. It is made for the Product component
