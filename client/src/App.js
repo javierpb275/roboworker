@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 
 //COMPONENTS
@@ -14,7 +14,7 @@ import ProductsList from './components/products-list/products-list.component';//
 import Scroll from './components/scroll/scroll.component';//This component allows us to wrap the producList and make it scrollable
 
 //Lists
-import {products} from './products';//This is an array of the products available
+import { products } from './products';//This is an array of the products available
 
 //Assets
 import nailerImg from './assets/nailer-image/nailer.png';
@@ -37,20 +37,21 @@ class App extends Component {
         name: '',
         email: '',
         coins: 0,
-        joined:''
+        joined: ''
       },
-      
+
     }
   }
 
   //This function takes care of loading the user which is passed down to the SignIn and SignUp components as a prop
   loadUser = (user) => {
-    this.setState({user: {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      coins: user.coins,
-      joined: user.joined
+    this.setState({
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        coins: user.coins,
+        joined: user.joined
       }
     })
   }
@@ -58,40 +59,59 @@ class App extends Component {
 
   //This gets mounted everytime we run the page and it updates the state
   componentDidMount() {
-    this.setState({ 
+    this.setState({
       user: this.state.user
-     });
+    });
   }
 
   //This function makes the user coins amount increase. It is made for the WorkButton Component
   onClickEarnCoins = () => {
-    const {user} = this.state;
+    const { user } = this.state;
 
-    fetch('http://localhost:3001/earncoins', { 
-      method: 'put', 
-      headers: {'Content-Type':'application/json'},
+    fetch('http://localhost:3001/earncoins', {
+      method: 'put',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         id: user.id
       })
     })
-    
-    .then(response => response.json())
-    .then(amount => {
-      this.setState(Object.assign(user, {coins: amount}));
-    })
- 
+
+      .then(response => response.json())
+      .then(amount => {
+        this.setState(Object.assign(user, { coins: amount }));
+      })
+
   };
 
   //This function allows the user to spend their coins. It is made for the Product component
   onClickSpendCoins = (price) => {
-    const {user} = this.state;
+    const { user } = this.state;
 
-    if (user.coins > price) {
-    this.setState(Object.assign(user, {coins: user.coins - price}));
-    }
 
-    else if (user.coins === price) {
-      this.setState(Object.assign(user, {coins: user.coins = 0}));
+    if (user.coins >= price) {
+
+      fetch('http://localhost:3001/spendcoins', {
+        method: 'put',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: user.id,
+          price: price
+        })
+      })
+
+        .then(response => response.json())
+        .then(data => {
+          if (typeof data === "number") {
+            this.setState(Object.assign(user, { coins: data }));
+          }
+
+          else {
+            alert(data);
+          }
+
+        })
+
+        .catch(responseError => alert(responseError));
 
     }
 
@@ -103,51 +123,51 @@ class App extends Component {
 
   //This function takes care of getting what the user types in the SearchBox and change the state of searchField
   handleChange = (e) => {
-    this.setState({searchField: e.target.value })
+    this.setState({ searchField: e.target.value })
   }
 
   //This function is used to change the route
   onRouteChange = (route) => {
 
     if (route === 'signout') {
-      this.setState({isSignedIn: false});
+      this.setState({ isSignedIn: false });
     }
 
-    else if (route === 'home'){
-    this.setState({isSignedIn: true});
+    else if (route === 'home') {
+      this.setState({ isSignedIn: true });
     }
 
-    this.setState({route: route});
+    this.setState({ route: route });
 
   }
 
 
   render() {
-    const {user, isSignedIn, searchField} = this.state;
+    const { user, isSignedIn, searchField } = this.state;
     //We filter the products so that we can use our SearchBox component to search for different products
     const filteredProducts = products.filter(product =>
       product.name.toLowerCase().includes(searchField.toLowerCase()));
-  return (
-    <div className="App" style={{padding: '1% 2% 2% 2%'}}>
-      <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
-      { this.state.route === 'home' 
-      ? <div>
-      <Title title={'ROBOWORKER'}/>
-      <Card id={user.id} name={user.name} email={user.email} coins={user.coins} coinIcon={coinImg}/>
-      <CustomButton handleClick={this.onClickEarnCoins} icon={nailerImg} title='Work'/>
-      <CustomIcon icon={storeImg} title='$TORE'/>
-      <SearchBox placeholder='Search Product' handleChange={this.handleChange}/>
-      <Scroll>
-      <ProductsList coinIcon={coinImg} products={filteredProducts} handleClick={this.onClickSpendCoins}/>
-      </Scroll>
+    return (
+      <div className="App" style={{ padding: '1% 2% 2% 2%' }}>
+        <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
+        {this.state.route === 'home'
+          ? <div>
+            <Title title={'ROBOWORKER'} />
+            <Card id={user.id} name={user.name} email={user.email} coins={user.coins} coinIcon={coinImg} />
+            <CustomButton handleClick={this.onClickEarnCoins} icon={nailerImg} title='Work' />
+            <CustomIcon icon={storeImg} title='$TORE' />
+            <SearchBox placeholder='Search Product' handleChange={this.handleChange} />
+            <Scroll>
+              <ProductsList coinIcon={coinImg} products={filteredProducts} handleClick={this.onClickSpendCoins} />
+            </Scroll>
+          </div>
+          : (
+            this.state.route === 'signin'
+              ? <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+              : <SignUp loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+          )
+        }
       </div>
-      : (
-        this.state.route === 'signin' 
-        ? <SignIn  loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-        : <SignUp loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-      )
-    }
-    </div>
     );
   }
 

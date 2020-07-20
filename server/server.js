@@ -41,25 +41,25 @@ const database = {
     ]
 }
 
-app.get('/', (req, res)=> {
+app.get('/', (req, res) => {
     res.send(database.users);
 })
 
 //SIGN IN:
 app.post('/signin', (req, res) => {
 
-    bcrypt.compare("pepe", '$2a$10$0AQhtrf9fVadenBg/sGoZegtMQm6yqPPtN5VRxYa4iwCXFvEm5bAi', function(err, res) {
+    bcrypt.compare("pepe", '$2a$10$0AQhtrf9fVadenBg/sGoZegtMQm6yqPPtN5VRxYa4iwCXFvEm5bAi', function (err, res) {
         console.log('first guess', res);
     });
-    bcrypt.compare("veggies", '$2a$10$0AQhtrf9fVadenBg/sGoZegtMQm6yqPPtN5VRxYa4iwCXFvEm5bAi', function(err, res) {
+    bcrypt.compare("veggies", '$2a$10$0AQhtrf9fVadenBg/sGoZegtMQm6yqPPtN5VRxYa4iwCXFvEm5bAi', function (err, res) {
         console.log('second guess', res);
     });
 
-    if(req.body.email === database.users[0].email && 
+    if (req.body.email === database.users[0].email &&
         req.body.password === database.users[0].password) {
 
-    res.json(database.users[0]);
-}   
+        res.json(database.users[0]);
+    }
 
     else {
 
@@ -74,7 +74,7 @@ app.post('/register', (req, res) => {
 
     const { email, name, password } = req.body;
 
-    bcrypt.hash(password, null, null, function(err, hash) {
+    bcrypt.hash(password, null, null, function (err, hash) {
         console.log(hash);
     });
 
@@ -87,7 +87,7 @@ app.post('/register', (req, res) => {
         joined: new Date()
     })
 
-    res.json(database.users[database.users.length-1]);
+    res.json(database.users[database.users.length - 1]);
 
 })
 
@@ -101,7 +101,7 @@ app.get('/profile/:id', (req, res) => {
 
         if (user.id === id) {
             found = true;
-           return res.json(user);
+            return res.json(user);
         }
 
     })
@@ -123,13 +123,40 @@ app.put('/earncoins', (req, res) => {
         if (user.id === id) {
             found = true;
             user.coins++
-           return res.json(user.coins);
+            return res.json(user.coins);
         }
 
     })
 
     if (!found) {
         res.status(400).json('not found');
+    }
+
+})
+
+//update the user to increase their coins:
+app.put('/spendcoins', (req, res) => {
+
+    const { id, price } = req.body;
+
+    const user = database.users.find(user =>
+        user.id === id
+
+    );
+
+    if (typeof user !== "undefined") {
+        if (user.coins >= price) {
+            user.coins = user.coins - price;
+            return res.status(200).json(user.coins);
+        }
+
+        else {
+            return res.status(202).json('You can`t afford this product. Keep Working!');
+        }
+    }
+
+    else {
+        res.status(404).json('user id not found');
     }
 
 })
@@ -151,6 +178,6 @@ bcrypt.compare("veggies", hash, function(err, res) {
 */
 
 //check if our server is running:
-app.listen(3001, ()=> {
+app.listen(3001, () => {
     console.log('app is running on port 3001');
 })
