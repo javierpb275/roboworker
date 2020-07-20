@@ -112,8 +112,8 @@ app.get('/profile/:id', (req, res) => {
 
 })
 
-//update the user coins:
-app.put('/coins', (req, res) => {
+//update the user to increase their coins:
+app.put('/earncoins', (req, res) => {
 
     const { id } = req.body;
     let found = false;
@@ -122,6 +122,7 @@ app.put('/coins', (req, res) => {
 
         if (user.id === id) {
             found = true;
+            user.coins++
            return res.json(user.coins);
         }
 
