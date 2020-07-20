@@ -67,7 +67,7 @@ class App extends Component {
   onClickEarnCoins = () => {
     const {user} = this.state;
 
-    fetch('http://localhost:3001/coins', { 
+    fetch('http://localhost:3001/earncoins', { 
       method: 'put', 
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
