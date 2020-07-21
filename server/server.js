@@ -134,7 +134,7 @@ app.put('/earncoins', (req, res) => {
 
 })
 
-//update the user to increase their coins:
+//update the user to decrease their coins when select a product:
 app.put('/spendcoins', (req, res) => {
 
     const { id, price } = req.body;
