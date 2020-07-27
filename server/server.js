@@ -17,17 +17,19 @@ app.use(cors());
 
 
 //KNEX
-const knex = require('knex')({
-    client: 'mysql',
+const knex = require('knex');
+
+knex({
+    client: 'pg',
     connection: {
-      host : '127.0.0.1',
-      user : 'your_database_user',
-      password : 'your_database_password',
-      database : 'myapp_test'
+      host : '127.0.0.1',//this is the same as localhost. 127.0.0.1 = home.
+      user : 'postgres',
+      password : 'postgres',
+      database : 'roboworker'
     }
   });
 
-  
+
 //fake database
 const database = {
     users: [
