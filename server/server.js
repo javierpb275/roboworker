@@ -99,7 +99,7 @@ app.post('/register', (req, res) => {
     })
     
     .then(user => {
-        res.json(user);
+        res.json(user[0]);
     })
 
     
