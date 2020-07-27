@@ -92,14 +92,17 @@ app.post('/register', (req, res) => {
 
     const { email, name, password } = req.body;
 
-    db('users').insert({
+    db('users').returning('*').insert({
         email: email,
         name: name,
         joined: new Date()
-    }).then(console.log)
+    })
+    
+    .then(user => {
+        res.json(user);
+    })
 
-    res.json(database.users[database.users.length - 1]);
-
+    
 })
 
 //PROFILE/:USERID (get the user for the homepage):
