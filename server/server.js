@@ -2,16 +2,32 @@
 const express = require('express');
 const app = express();
 
+
 //bodyParser:
 app.use(express.json());
 
+
 //BCRYPT:
 const bcrypt = require('bcrypt-nodejs');
+
 
 //CORS:
 const cors = require('cors');
 app.use(cors());
 
+
+//KNEX
+const knex = require('knex')({
+    client: 'mysql',
+    connection: {
+      host : '127.0.0.1',
+      user : 'your_database_user',
+      password : 'your_database_password',
+      database : 'myapp_test'
+    }
+  });
+
+  
 //fake database
 const database = {
     users: [
