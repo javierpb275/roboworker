@@ -29,10 +29,6 @@ const db = knex({
     }
   });
 
-db.select('*').from('users').then(data => {
-    console.log(data)
-});
-
 
 //fake database
 const database = {
@@ -96,18 +92,11 @@ app.post('/register', (req, res) => {
 
     const { email, name, password } = req.body;
 
-    bcrypt.hash(password, null, null, function (err, hash) {
-        console.log(hash);
-    });
-
-    database.users.push({
-        id: '125',
-        name: name,
+    db('users').insert({
         email: email,
-        password: password,
-        coins: 0,
+        name: name,
         joined: new Date()
-    })
+    }).then(console.log)
 
     res.json(database.users[database.users.length - 1]);
 
