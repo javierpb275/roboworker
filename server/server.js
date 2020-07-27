@@ -19,7 +19,7 @@ app.use(cors());
 //KNEX
 const knex = require('knex');
 
-knex({
+const postgres = knex({
     client: 'pg',
     connection: {
       host : '127.0.0.1',//this is the same as localhost. 127.0.0.1 = home.
@@ -28,6 +28,8 @@ knex({
       database : 'roboworker'
     }
   });
+
+postgres.select('*').from('users');
 
 
 //fake database
