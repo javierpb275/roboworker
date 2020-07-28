@@ -156,15 +156,20 @@ app.put('/spendcoins', (req, res) => {
 
     const { id, price } = req.body;
 
-    const user = database.users.find(user =>
-        user.id === id
+    const user = db('users').where('id', '=', id)
 
-    );
+    const coins = user.returning('coins')
 
     if (typeof user !== "undefined") {
-        if (user.coins >= price) {
-            user.coins = user.coins - price;
-            return res.status(200).json(user.coins);
+        if (coins >= price) {
+            
+            user.decrement('coins', price)
+
+            .returning('coins')
+        
+            .then(coins => {
+                res.json(coins[0]);
+            })
         }
 
         else {
