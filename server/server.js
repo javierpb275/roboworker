@@ -113,13 +113,12 @@ app.get('/profile/:id', (req, res) => {
     const { id } = req.params;
     let found = false;
 
-    database.users.forEach(user => {
-
-        if (user.id === id) {
-            found = true;
-            return res.json(user);
-        }
-
+    db.select('*').from('users').where({
+        id: id
+    })
+    
+    .then(user => {
+        console.log(user[0]);
     })
 
     if (!found) {
