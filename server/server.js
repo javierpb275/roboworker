@@ -117,13 +117,18 @@ app.get('/profile/:id', (req, res) => {
     })
     
     .then(user => {
+        if (user.length) {
         res.json(user[0]);
-    })
-/*
-    if (!found) {
-        res.status(400).json('not found');
     }
-*/
+
+    else {
+        res.status(400).json('Not found')
+    }
+
+    })
+
+    .catch(err => res.status(400).json('error getting user'))
+
 })
 
 //update the user to increase their coins:
