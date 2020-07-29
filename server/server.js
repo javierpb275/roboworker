@@ -68,23 +68,10 @@ app.get('/', (req, res) => {
 //SIGN IN:
 app.post('/signin', (req, res) => {
 
-    bcrypt.compare("pepe", '$2a$10$0AQhtrf9fVadenBg/sGoZegtMQm6yqPPtN5VRxYa4iwCXFvEm5bAi', function (err, res) {
-        console.log('first guess', res);
-    });
-    bcrypt.compare("veggies", '$2a$10$0AQhtrf9fVadenBg/sGoZegtMQm6yqPPtN5VRxYa4iwCXFvEm5bAi', function (err, res) {
-        console.log('second guess', res);
-    });
-
-    if (req.body.email === database.users[0].email &&
-        req.body.password === database.users[0].password) {
-
-        res.json(database.users[0]);
-    }
-
-    else {
-
-        res.status(400).json('error logging in');
-    }
+    db.select('email', 'hash').from('login')
+        .then(data => {
+            console.log(data);
+        })
 
 })
 
@@ -103,7 +90,7 @@ app.post('/register', (req, res) => {
         .into('login')
         .returning('email')
         .then(loginEmail => {
-            trx('users')
+            return trx('users')
             .returning('*')
             .insert({
                 email: loginEmail[0],
