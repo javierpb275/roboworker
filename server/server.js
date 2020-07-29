@@ -104,7 +104,7 @@ app.post('/register', (req, res) => {
             trx('users')
             .returning('*')
             .insert({
-                email: loginEmail,
+                email: loginEmail[0],
                 name: name,
                 joined: new Date()
             })
@@ -117,7 +117,7 @@ app.post('/register', (req, res) => {
 
             .then(trx.commit)
             .catch(trx.rollback)
-            
+
         })
 
     
