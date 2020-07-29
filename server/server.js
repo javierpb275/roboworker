@@ -59,9 +59,11 @@ const database = {
     ]
 }
 
+
 app.get('/', (req, res) => {
     res.send(database.users);
 })
+
 
 //SIGN IN:
 app.post('/signin', (req, res) => {
@@ -84,8 +86,8 @@ app.post('/signin', (req, res) => {
         res.status(400).json('error logging in');
     }
 
-
 })
+
 
 //REGISTER:
 app.post('/register', (req, res) => {
@@ -120,12 +122,10 @@ app.post('/register', (req, res) => {
 
         })
 
-    
-
     .catch(err => res.status(400).json('unable to register'))
-
     
 })
+
 
 //PROFILE/:USERID (get the user for the homepage):
 app.get('/profile/:id', (req, res) => {
@@ -151,6 +151,7 @@ app.get('/profile/:id', (req, res) => {
 
 })
 
+
 //update the user to increase their coins:
 app.put('/earncoins', (req, res) => {
 
@@ -168,8 +169,8 @@ app.put('/earncoins', (req, res) => {
 
     .catch(err => res.status(400).json('unable to earn coins'));
 
-
 })
+
 
 //update the user to decrease their coins when select a product:
 app.put('/spendcoins', (req, res) => {
@@ -208,21 +209,6 @@ app.put('/spendcoins', (req, res) => {
 
 })
 
-/*
-
-bcrypt.hash("bacon", null, null, function(err, hash) {
-    // Store hash in your password DB.
-});
-
-// Load hash from your password DB.
-bcrypt.compare("bacon", hash, function(err, res) {
-    // res == true
-});
-bcrypt.compare("veggies", hash, function(err, res) {
-    // res = false
-});
-
-*/
 
 //check if our server is running:
 app.listen(3001, () => {
