@@ -33,7 +33,7 @@ const db = knex({
 //CONTROLLERS
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
-
+const profile = require('./controllers/profile');
 
 app.get('/', (req, res) => {
     res.send(database.users);
@@ -43,35 +43,11 @@ app.get('/', (req, res) => {
 //SIGN IN:
 app.post('/signin', (req, res) => {signin.handleSignin(req, res, db, bcrypt)}) 
     
-
-
 //REGISTER:
 app.post('/register', (req, res) => {register.handleRegister(req, res, db, bcrypt)})
 
-
 //PROFILE/:USERID (get the user for the homepage):
-app.get('/profile/:id', (req, res) => {
-
-    const { id } = req.params;
-
-    db.select('*').from('users').where({
-        id: id
-    })
-    
-    .then(user => {
-        if (user.length) {
-        res.json(user[0]);
-    }
-
-    else {
-        res.status(400).json('Not found')
-    }
-
-    })
-
-    .catch(err => res.status(400).json('error getting user'))
-
-})
+app.get('/profile/:id', (req, res) => {profile.handleProfileGet(req, res, db)})
 
 
 //update the user to increase their coins:
