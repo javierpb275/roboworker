@@ -24,24 +24,26 @@ import coinImg from './assets/coin-image/coin.png';
 //style
 import './App.css';
 
+const initialState = {
+  searchField: '',//This searchField is used for the SearchBox component to search
+  route: 'signin',//This route state takes care of changing from one page to another. The default page will be the SignIn component.
+  isSignedIn: false,// isSignedIn checks if the user is signed in 
+  user: {
+    id: '',
+    name: '',
+    email: '',
+    coins: 0,
+    joined: ''
+
+  }
+}
 
 class App extends Component {
   constructor() {
     super()
-    this.state = {
-      searchField: '',//This searchField is used for the SearchBox component to search
-      route: 'signin',//This route state takes care of changing from one page to another. The default page will be the SignIn component.
-      isSignedIn: false,// isSignedIn checks if the user is signed in 
-      user: {
-        id: '',
-        name: '',
-        email: '',
-        coins: 0,
-        joined: ''
-      },
-
-    }
+    this.state = initialState 
   }
+
 
   //This function takes care of loading the user which is passed down to the SignIn and SignUp components as a prop
   loadUser = (user) => {
@@ -130,7 +132,7 @@ class App extends Component {
   onRouteChange = (route) => {
 
     if (route === 'signout') {
-      this.setState({ isSignedIn: false });
+      this.setState( initialState );
     }
 
     else if (route === 'home') {
