@@ -30,35 +30,6 @@ const db = knex({
   });
 
 
-//fake database
-const database = {
-    users: [
-        {
-            id: '123',
-            name: 'John',
-            email: 'john@gmail.com',
-            password: 'cookies',
-            coins: 0,
-            joined: new Date()
-        },
-        {
-            id: '124',
-            name: 'Sally',
-            email: 'sally@gmail.com',
-            password: 'bananas',
-            coins: 0,
-            joined: new Date()
-        }
-    ],
-    login: [
-        {
-            id: '987',
-            hash: '',
-            email: 'john@gmail.com'
-        }
-    ]
-}
-
 
 app.get('/', (req, res) => {
     res.send(database.users);
@@ -89,7 +60,7 @@ app.post('/signin', (req, res) => {
            else {
             res.status(400).json('wrong credentials')
            }
-           
+
         })
 
         .catch(err => res.status(400).json('wrong credentials'))
@@ -193,7 +164,7 @@ app.put('/spendcoins', (req, res) => {
 
         if (coins >= price) {
 
-            db('users').where('id', '=', id)
+            return db('users').where('id', '=', id)
 
             .decrement('coins', price)
 
