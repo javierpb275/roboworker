@@ -156,20 +156,25 @@ app.put('/spendcoins', (req, res) => {
 
     const { id, price } = req.body;
 
-    const user = db('users').where('id', '=', id)
-
-    const coins = user.returning('coins')
+    const user = db('users').where('id', '=', id).then(user => {res.json(user[0])})
+    
+    const coins = db('users').where('id', '=', id).then(user => {res.json(user[0].coins)})
 
     if (typeof user !== "undefined") {
+
         if (coins >= price) {
-            
-            user.decrement('coins', price)
+
+            db('users').where('id', '=', id)
+
+            .decrement('coins', price)
 
             .returning('coins')
-        
+
             .then(coins => {
                 res.json(coins[0]);
             })
+
+            .catch(err => res.status(400).json('unable to spend coins'));
         }
 
         else {
