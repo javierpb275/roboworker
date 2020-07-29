@@ -34,6 +34,8 @@ const db = knex({
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
+const earncoins = require('./controllers/earncoins');
+
 
 app.get('/', (req, res) => {
     res.send(database.users);
@@ -49,25 +51,8 @@ app.post('/register', (req, res) => {register.handleRegister(req, res, db, bcryp
 //PROFILE/:USERID (get the user for the homepage):
 app.get('/profile/:id', (req, res) => {profile.handleProfileGet(req, res, db)})
 
-
 //update the user to increase their coins:
-app.put('/earncoins', (req, res) => {
-
-    const { id } = req.body;
-
-    db('users').where('id', '=', id)
-
-    .increment('coins', 1)
-
-    .returning('coins')
-
-    .then(coins => {
-        res.json(coins[0]);
-    })
-
-    .catch(err => res.status(400).json('unable to earn coins'));
-
-})
+app.put('/earncoins', (req, res) => {earncoins.handleEarnCoins(req, res, db)})
 
 
 //update the user to decrease their coins when select a product:
