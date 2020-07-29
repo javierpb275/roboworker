@@ -114,6 +114,10 @@ app.post('/register', (req, res) => {
                 })
 
             })
+
+            .then(trx.commit)
+            .catch(trx.rollback)
+            
         })
 
     
