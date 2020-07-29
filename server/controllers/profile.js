@@ -1,3 +1,5 @@
+//PROFILE/:USERID (get the user for the homepage):
+
 const handleProfileGet = (req, res, db) => {
 
     const { id } = req.params;

@@ -1,3 +1,5 @@
+//SIGN IN:
+
 const handleSignin = (req, res, db, bcrypt) => {
 
     db.select('email', 'hash').from('login')
