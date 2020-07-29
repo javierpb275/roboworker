@@ -83,6 +83,8 @@ class App extends Component {
         this.setState(Object.assign(user, { coins: amount }));
       })
 
+      .catch(console.log)
+
   };
 
   //This function allows the user to spend their coins. It is made for the Product component
