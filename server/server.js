@@ -35,6 +35,7 @@ const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const earncoins = require('./controllers/earncoins');
+const spendcoins = require('./controllers/spendcoins');
 
 
 app.get('/', (req, res) => {
@@ -54,43 +55,8 @@ app.get('/profile/:id', (req, res) => {profile.handleProfileGet(req, res, db)})
 //update the user to increase their coins:
 app.put('/earncoins', (req, res) => {earncoins.handleEarnCoins(req, res, db)})
 
-
 //update the user to decrease their coins when select a product:
-app.put('/spendcoins', (req, res) => {
-
-    const { id, price } = req.body;
-
-    const user = db('users').where('id', '=', id).then(user => {res.json(user[0])})
-    
-    const coins = db('users').where('id', '=', id).then(user => {res.json(user[0].coins)})
-
-    if (typeof user !== "undefined") {
-
-        if (coins >= price) {
-
-            return db('users').where('id', '=', id)
-
-            .decrement('coins', price)
-
-            .returning('coins')
-
-            .then(coins => {
-                res.json(coins[0]);
-            })
-
-            .catch(err => res.status(400).json('unable to spend coins'));
-        }
-
-        else {
-            return res.status(202).json('You can`t afford this product. Keep Working!');
-        }
-    }
-
-    else {
-        res.status(404).json('user id not found');
-    }
-
-})
+app.put('/spendcoins', (req, res) => {spendcoins.handleSpendCoins(req, res, db)})
 
 
 //check if our server is running:

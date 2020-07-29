@@ -1,6 +1,6 @@
 //update the user to increase their coins:
 
-const handleEarnCoins = (req, res, db) =>{
+const handleEarnCoins = (req, res, db) => {
 
     const { id } = req.body;
 
