@@ -105,7 +105,7 @@ class App extends Component {
 
         .then(response => response.json())
         .then(data => {
-          if (typeof data === "number") {
+          if (!isNaN( data )) {
             this.setState(Object.assign(user, { coins: data }));
           }
 
